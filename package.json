@@ -1,0 +1,19 @@
+{
+	"scripts": {
+		"dev": "bun run --hot src/index.ts",
+		"prepare": "husky install"
+	},
+	"dependencies": {
+		"hono": "^3.6.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.2.2",
+		"bun-types": "^0.6.2",
+		"husky": "^8.0.0",
+		"lint-staged": "^14.0.1"
+	},
+	"lint-staged": {
+		"*.{ts,js}": "bunx biome check --apply-unsafe ./src",
+		"**/*": "bunx biome format --write --files-ignore-unknown=true ./src"
+	}
+}
