@@ -1,17 +1,27 @@
 {
+	"name": "api-hono",
+	"version": "0.0.2",
 	"scripts": {
 		"dev": "bun run --hot src/index.ts",
+		"db:generate": "bunx drizzle-kit generate:sqlite",
+		"db:push": "bunx drizzle-kit push:sqlite",
+		"db:studio": "bunx drizzle-kit studio",
 		"prepare": "husky install"
 	},
 	"dependencies": {
+		"better-sqlite3": "^8.6.0",
+		"drizzle-orm": "^0.28.6",
+		"glob": "^10.3.5",
 		"hono": "^3.6.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.2.2",
 		"bun-types": "^0.6.2",
+		"drizzle-kit": "^0.19.13",
 		"husky": "^8.0.0",
 		"lint-staged": "^14.0.1"
 	},
+	"trustedDependencies": ["better-sqlite3"],
 	"lint-staged": {
 		"*.{ts,js}": "bunx biome check --apply-unsafe ./src",
 		"**/*": "bunx biome format --write --files-ignore-unknown=true ./src"

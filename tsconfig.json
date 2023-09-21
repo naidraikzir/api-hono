@@ -1,9 +1,17 @@
 {
 	"compilerOptions": {
+		"module": "ES2022",
+		"moduleResolution": "node",
+		"target": "ES2021",
 		"esModuleInterop": true,
 		"strict": true,
 		"jsx": "react-jsx",
 		"jsxImportSource": "hono/jsx",
-		"types": ["bun-types"]
+		"types": [
+			"bun-types"
+		] /* Specify the base directory to resolve non-relative module names. */,
+		"paths": {
+			"@/*": ["./src/*"]
+		}
 	}
 }
