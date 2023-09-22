@@ -1,22 +1,20 @@
 import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
-import { z } from 'zod';
 import { add, del, get, list, update } from './controller';
+import { insertBookSchema } from './schema';
 
 const basePath = '/books';
 
-const validator = zValidator(
-	'json',
-	z.object({
-		name: z.string(),
-		author: z.string(),
-	}),
-	(result, c) => {
-		if (!result.success) {
-			return c.json(result.error, 400);
-		}
-	},
-);
+const insertBookRequest = insertBookSchema.pick({
+	name: true,
+	author: true,
+});
+
+const validator = zValidator('json', insertBookRequest, (result, c) => {
+	if (!result.success) {
+		return c.json(result.error.issues, 400);
+	}
+});
 
 const route = new Hono();
 route.get('/', list);

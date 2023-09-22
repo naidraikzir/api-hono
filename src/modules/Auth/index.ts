@@ -1,22 +1,20 @@
 import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
-import { z } from 'zod';
 import { login, register } from './controller';
+import { insertUserSchema } from './schema';
 
 const basePath = '/auth';
 
-const validator = zValidator(
-	'json',
-	z.object({
-		username: z.string(),
-		password: z.string(),
-	}),
-	(result, c) => {
-		if (!result.success) {
-			return c.json(result.error, 400);
-		}
-	},
-);
+const insertUserRequest = insertUserSchema.pick({
+	username: true,
+	password: true,
+});
+
+const validator = zValidator('json', insertUserRequest, (result, c) => {
+	if (!result.success) {
+		return c.json(result.error.issues, 400);
+	}
+});
 
 const route = new Hono();
 route.post('/register', validator, register);
