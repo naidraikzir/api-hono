@@ -1,3 +1,4 @@
+import { jwt } from '@/middlewares/auth';
 import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
 import { add, del, get, list, update } from './controller';
@@ -19,6 +20,8 @@ const validator = zValidator('json', insertBookRequest, (result, c) => {
 const route = new Hono();
 route.get('/', list);
 route.get('/:id', get);
+
+route.use('/*', jwt);
 route.post('/', validator, add);
 route.put('/:id', validator, update);
 route.delete('/:id', del);
