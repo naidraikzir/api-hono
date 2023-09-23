@@ -4,8 +4,8 @@ import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
 
 export const users = sqliteTable('users', {
 	id: text('id').primaryKey(),
-	username: text('username').unique(),
-	password: text('password'),
+	username: text('username').unique().notNull(),
+	password: text('password').notNull(),
 	timestamp: text('timestamp').default(sql`CURRENT_TIMESTAMP`),
 });
 

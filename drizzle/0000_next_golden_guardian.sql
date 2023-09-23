@@ -1,7 +1,7 @@
 CREATE TABLE `users` (
 	`id` text PRIMARY KEY NOT NULL,
-	`username` text,
-	`password` text,
+	`username` text NOT NULL,
+	`password` text NOT NULL,
 	`timestamp` text DEFAULT CURRENT_TIMESTAMP
 );
 --> statement-breakpoint
