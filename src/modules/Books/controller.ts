@@ -1,6 +1,6 @@
-import { db } from '@/db';
 import { desc, eq } from 'drizzle-orm';
 import { Context } from 'hono';
+import { db } from '~/db';
 import { books } from './schema';
 
 export const list = async (c: Context) =>

@@ -1,7 +1,7 @@
-import { db } from '@/db';
 import { eq } from 'drizzle-orm';
 import type { Context } from 'hono';
 import { sign } from 'hono/jwt';
+import { db } from '~/db';
 import { users } from './schema';
 
 export const register = async (c: Context) => {

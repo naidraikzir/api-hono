@@ -1,6 +1,6 @@
-import { jwt } from '@/middlewares/auth';
 import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
+import { jwt } from '~/middlewares/auth';
 import { add, del, get, list, update } from './controller';
 import { insertBookSchema } from './schema';
 
