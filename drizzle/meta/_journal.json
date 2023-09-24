@@ -8,6 +8,13 @@
 			"when": 1695441440372,
 			"tag": "0000_next_golden_guardian",
 			"breakpoints": true
+		},
+		{
+			"idx": 1,
+			"version": "5",
+			"when": 1695564507225,
+			"tag": "0001_wise_night_nurse",
+			"breakpoints": true
 		}
 	]
 }

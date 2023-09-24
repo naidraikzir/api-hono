@@ -1,0 +1,1 @@
+ALTER TABLE books ADD `cover` text;
