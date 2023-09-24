@@ -13,12 +13,14 @@
 		"better-sqlite3": "^8.6.0",
 		"drizzle-orm": "^0.28.6",
 		"drizzle-zod": "^0.5.1",
+		"file-type": "^18.5.0",
 		"glob": "^10.3.5",
 		"hono": "^3.6.0",
 		"zod": "^3.22.2"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.2.2",
+		"@types/web": "^0.0.115",
 		"bun-types": "^0.6.2",
 		"drizzle-kit": "^0.19.13",
 		"husky": "^8.0.0",

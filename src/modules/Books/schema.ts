@@ -6,6 +6,7 @@ export const books = sqliteTable('books', {
 	id: text('id').primaryKey(),
 	name: text('name'),
 	author: text('author'),
+	cover: text('cover'),
 	timestamp: text('timestamp').default(sql`CURRENT_TIMESTAMP`),
 });
 
