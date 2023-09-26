@@ -9,7 +9,7 @@ export const register = async (c: Context) => {
 
 	const exist = (
 		await db.select().from(users).where(eq(users.username, body.username))
-	)[0];
+	).at(0);
 	if (exist) {
 		return c.text('User already exists', 409);
 	}
@@ -26,7 +26,7 @@ export const login = async (c: Context) => {
 
 	const user = (
 		await db.select().from(users).where(eq(users.username, body.username))
-	)[0];
+	).at(0);
 	if (!user) return c.text('No such user!', 404);
 
 	const isPasswordMatched = await Bun.password.verify(

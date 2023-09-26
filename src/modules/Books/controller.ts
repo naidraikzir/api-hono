@@ -1,7 +1,7 @@
 import { unlink } from 'node:fs/promises';
 import { desc, eq } from 'drizzle-orm';
-import { fileTypeFromBlob } from 'file-type';
 import { Context } from 'hono';
+import sharp from 'sharp';
 import { UPLOAD_DIR } from '~/constants';
 import { db } from '~/db';
 import { Book, books } from './schema';
@@ -29,13 +29,13 @@ export const add = async (c: Context) => {
 		await db
 			.insert(books)
 			.values({
-				id: id as string,
+				id,
 				name: name as string,
 				author: author as string,
 				cover: coverFilename,
 			})
 			.returning()
-	)[0];
+	).at(0);
 
 	return c.json(inserted);
 };
@@ -60,11 +60,9 @@ export const update = async (c: Context) => {
 			})
 			.where(eq(books.id, id))
 			.returning()
-	)[0];
+	).at(0);
 
-	if (coverFilename) {
-		deleteCover(exist);
-	}
+	deleteCover(exist);
 	return c.json(updated);
 };
 
@@ -83,23 +81,22 @@ export const del = async (c: Context) => {
 			.delete(books)
 			.where(eq(books.id, c.req.param('id')))
 			.returning()
-	)[0];
+	).at(0);
 
 	deleteCover(deleted);
 	return c.json(deleted);
 };
 
 async function saveCover(cover: Blob) {
-	let filename;
-	if (cover) {
-		const filetype = await fileTypeFromBlob(cover as Blob);
-		filename = `${crypto.randomUUID()}.${filetype?.ext}`;
-		await Bun.write(`uploads/${filename}`, cover as Blob);
-	}
+	if (!cover) return;
+	const arrayBuffer = await cover.arrayBuffer();
+	const filename = `${crypto.randomUUID()}.webp`;
+	await sharp(arrayBuffer).webp().toFile(`uploads/${filename}`);
 	return filename;
 }
 
-async function deleteCover(book: Book) {
+async function deleteCover(book: Book | undefined) {
+	if (!book) return;
 	const cover = `${UPLOAD_DIR}/${book.cover}`;
 	if (book.cover && (await Bun.file(cover).exists())) {
 		unlink(`${UPLOAD_DIR}/${book.cover}`);
