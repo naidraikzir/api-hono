@@ -1,10 +1,10 @@
 import { unlink } from 'node:fs/promises';
 import { desc, eq } from 'drizzle-orm';
-import { Context } from 'hono';
+import type { Context } from 'hono';
 import sharp from 'sharp';
 import { UPLOAD_DIR } from '~/constants';
 import { db } from '~/db';
-import { Book, books } from './schema';
+import { type Book, books } from './schema';
 
 export const list = async (c: Context) =>
 	c.json(await db.select().from(books).orderBy(desc(books.timestamp)));

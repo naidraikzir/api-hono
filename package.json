@@ -26,7 +26,6 @@
 		"lint-staged": "^15.2.9"
 	},
 	"lint-staged": {
-		"*.{ts,js}": "bunx biome check --apply-unsafe ./src",
-		"**/*": "bunx biome format --write --files-ignore-unknown=true ./src"
+		"**/*": "bunx biome check --write ./src"
 	}
 }

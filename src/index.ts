@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
-import { logger } from 'hono/logger';
-import { cors } from 'hono/cors';
 import { serveStatic } from 'hono/bun';
+import { cors } from 'hono/cors';
+import { logger } from 'hono/logger';
 import { routes } from './routes';
 
 const app = new Hono();
