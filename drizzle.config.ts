@@ -4,7 +4,7 @@ import { DB_NAME } from './src/constants';
 export default {
 	schema: './src/**/schema.ts',
 	out: './drizzle',
-	driver: 'better-sqlite',
+	dialect: 'sqlite',
 	dbCredentials: {
 		url: `./${DB_NAME}`,
 	},

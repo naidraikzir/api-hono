@@ -15,8 +15,7 @@
 		"formatWithErrors": false,
 		"indentStyle": "tab",
 		"indentSize": 4,
-		"lineWidth": 80,
-		"ignore": ["dist/*", "*.db", "*.md", "*.lockb", "node_modules"]
+		"lineWidth": 80
 	},
 	"javascript": {
 		"formatter": {
@@ -25,5 +24,8 @@
 			"trailingComma": "all",
 			"arrowParentheses": "asNeeded"
 		}
+	},
+	"files": {
+		"ignore": ["dist/*", "*.db", "*.md", "*.lockb", "node_modules"]
 	}
 }
