@@ -1,8 +1,6 @@
 {
-	"version": "5",
+	"version": "6",
 	"dialect": "sqlite",
-	"id": "ca2e99e1-565d-4b65-bd5d-f22e603c4dab",
-	"prevId": "0e046d4f-de25-4817-8fec-8515fe92dda7",
 	"tables": {
 		"users": {
 			"name": "users",
@@ -96,8 +94,9 @@
 	},
 	"enums": {},
 	"_meta": {
-		"schemas": {},
 		"tables": {},
 		"columns": {}
-	}
+	},
+	"id": "ca2e99e1-565d-4b65-bd5d-f22e603c4dab",
+	"prevId": "0e046d4f-de25-4817-8fec-8515fe92dda7"
 }

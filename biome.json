@@ -13,14 +13,14 @@
 		"enabled": true,
 		"formatWithErrors": false,
 		"indentStyle": "tab",
-		"indentSize": 4,
+		"indentWidth": 4,
 		"lineWidth": 80
 	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single",
 			"semicolons": "always",
-			"trailingComma": "all",
+			"trailingCommas": "all",
 			"arrowParentheses": "asNeeded"
 		}
 	},

@@ -3,8 +3,10 @@
 	"version": "0.2.1",
 	"scripts": {
 		"dev": "bun run --watch src/index.ts",
-		"db:generate": "bunx drizzle-kit generate:sqlite",
-		"db:push": "bunx drizzle-kit push:sqlite",
+		"db:generate": "bunx drizzle-kit generate",
+		"db:migrate": "bunx drizzle-kit migrate",
+		"db:push": "bunx drizzle-kit push",
+		"db:up": "bunx drizzle-kit up",
 		"db:studio": "bunx drizzle-kit studio",
 		"prepare": "husky"
 	},
